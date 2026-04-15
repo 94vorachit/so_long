@@ -6,11 +6,28 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 02:44:07 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/15 02:52:52 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/15 23:19:11 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
+
+void	*ft_free(void *ptr)
+{
+	free(ptr);
+	return (NULL);
+}
+
+void	*ft_free_2d(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
+	return (NULL);
+}
 
 char	*ft_strcpy(char *dst, const char *src)
 {
