@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 23:54:11 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/16 02:03:40 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 02:46:34 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	ft_so_long(t_main *main)
 
 int	main(int ac, char **av)
 {
-	t_main	*main;
+	t_main	main;
 	
 	if (ac != 2)
 	{
@@ -46,12 +46,12 @@ int	main(int ac, char **av)
 		ft_putendl_fd("Error\nProgram must take a <.ber> file.", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	ft_parse_map(av[1], main->map.parsed_map);
-	if (!ft_is_map_valid(main->map))
+	ft_parse_map(av[1], &main.map.parsed_map);
+	if (!ft_check_valid_map(&main.map))
 	{
 		ft_putendl_fd("Error\nInvalid map.", STDERR_FILENO);
-		ft_exit(EXIT_FAILURE, main);
+		ft_exit(EXIT_FAILURE, &main);
 	}
 	ft_so_long(&main);
-	ft_exit(EXIT_FAILURE, main);
+	ft_exit(EXIT_SUCCESS, &main);
 }

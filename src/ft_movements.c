@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:11:56 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/15 23:16:55 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 02:54:12 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	ft_key_move(int keycode, t_main *main)
 int	key_hook(int keycode, t_main *main)
 {
 	if (keycode == ESC)
-		ft_quit_program(EXIT_SUCCESS, main);
+		window_destroyed(main);
 	if ((keycode != A_LEFT && keycode != D_RIGHT
 			&& keycode != W_UP && keycode != S_DOWN)
 		|| main->map.game_ended)
@@ -76,6 +76,9 @@ int	key_hook(int keycode, t_main *main)
 	ft_key_move(keycode, main);
 	ft_render_assets(main);
 	if (main->map.game_ended)
+	{
 		printf("You won!\n");
+		window_destroyed(main);
+	}
 	return (1);
 }

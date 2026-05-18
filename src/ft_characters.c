@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:03:09 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/15 23:14:32 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 03:03:44 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ void	ft_render_assets(t_main *main)
 	int	j;
 	int	x;
 	int	y;
-
+	char	*desc;
+	int		c;
+	
 	y = 0;
 	i = 0;
+	c = 0x00FFFFFF;
+	desc = "P R E S S   E S C   O R   C L I C K   ( X )   T O   E X I T";
 	while (main->map.parsed_map[i])
 	{
 		x = 0;
@@ -63,6 +67,7 @@ void	ft_render_assets(t_main *main)
 		y += main->map.assets.height;
 		i ++;
 	}
+	mlx_string_put(main->mlx, main->win.mlx_win, 10, 20, c, desc);
 }
 
 void	ft_xpm_to_img(t_main *main)

@@ -6,13 +6,13 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 02:44:07 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/15 23:19:11 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 02:55:53 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
 
-void	*ft_free(void *ptr)
+void	*ft_free_ptr(void *ptr)
 {
 	free(ptr);
 	return (NULL);
@@ -71,3 +71,30 @@ char	*ft_strnjoin(char const *s1, char const *s2, size_t n)
 	free((void *)s1);
 	return (buffer);
 }
+
+// char	*ft_itoa(int n)
+// {
+// 	char	*ptr;
+// 	int		len;
+// 	long	nlong;
+
+// 	nlong = (long)n;
+// 	len = ft_sizeofn(nlong);
+// 	ptr = calloc((len + 1), sizeof(char));
+// 	if (!ptr)
+// 		return (NULL);
+// 	ptr[len] = '\0';
+// 	if (n == 0)
+// 		ptr[0] = '0';
+// 	if (nlong < 0)
+// 	{
+// 		ptr[0] = '-';
+// 		nlong = -nlong;
+// 	}
+// 	while (len-- >= 0 && nlong > 0 && ptr[len] != '-')
+// 	{
+// 		ptr[len] = nlong % 10 + '0';
+// 		nlong = nlong / 10;
+// 	}
+// 	return (ptr);
+// }

@@ -91,9 +91,9 @@ void	ft_parse_map(char *file, char ***map)
 		if (!line)
 			break ;
 		lines = ft_strnjoin(lines, line, ft_strlen(line));
-		line = ft_free(line);
+		line = ft_free_ptr(line);
 	}
 	close(fd);
 	*map = ft_split(lines, '\n');
-	lines = ft_free(lines);
+	lines = ft_free_ptr(lines);
 }

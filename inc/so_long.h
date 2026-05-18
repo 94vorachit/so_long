@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 01:04:58 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/14 05:00:00 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 04:47:01 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@
 # define EXIT 69
 # define START_POSITION 80
 
-# define SPACE_IMG "img/space.png"
-# define WALL_IMG "img/wall.png"
-# define GEMSTONE_IMG "img/gemstone.png"
-# define R_EXIT_IMG "img/right_exit.png"
-# define L_EXIT_IMG "img/left_exit.png"
-# define PLAYER_IMG "img/miner.png"
+# define SPACE_IMG "img/space.xpm"
+# define WALL_IMG "img/wall.xpm"
+# define GEMSTONE_IMG "img/Gem.xpm"
+# define R_EXIT_IMG "img/tomb.xpm"
+# define L_EXIT_IMG "img/tomb.xpm"
+# define PLAYER_IMG "img/Zombie.xpm"
 
 typedef struct s_win {
 	void		*mlx_win;
@@ -91,5 +91,22 @@ typedef struct s_line
 }	t_line;
 
 char	*get_next_line(int fd);
+
+void	ft_render_assets(t_main *main);
+void	ft_xpm_to_img(t_main *main);
+
+void	ft_exit(int	status, t_main *main);
+int		window_destroyed(t_main *main);
+
+int		key_hook(int keycode, t_main *main);
+
+void	*ft_free_ptr(void *ptr);
+void	*ft_free_2d(char **ptr);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strnjoin(char const *s1, char const *s2, size_t n);
+char	*ft_itoa(int n);
+
+int		ft_check_valid_map(t_map *map);
+void	ft_parse_map(char *file, char ***map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 01:53:56 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/16 01:54:34 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 02:33:25 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_exit(int	status, t_main *main)
 
 int	window_destroyed(t_main *main)
 {
-	ft_quit_program(EXIT_SUCCESS, main);
+	ft_exit(EXIT_SUCCESS, main);
 	return (EXIT_SUCCESS);
 }

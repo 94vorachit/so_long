@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:22:20 by hel-makh          #+#    #+#             */
-/*   Updated: 2026/04/14 04:56:23 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/04/16 02:34:08 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ char	*get_next_line(int fd)
 	while (add_next_line(fd, &next_line))
 		;
 	if (!*next_line)
-		next_line = ft_free(next_line);
+		next_line = ft_free_ptr(next_line);
 	return (next_line);
 }
