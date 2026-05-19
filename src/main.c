@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 23:54:11 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/19 18:09:14 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/19 19:32:32 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_so_long(t_main *main)
 	main->mlx = mlx_init();
 	if (!main->mlx)
 	{
-		perror("Error\nMlx initialization failed");
+		ft_putendl_fd("Error\nMlx initialization failed", STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	ft_xpm_to_img(main);
@@ -34,23 +34,24 @@ static void	ft_so_long(t_main *main)
 int	main(int ac, char **av)
 {
 	t_main	main;
+	char	*ext;
 
-	main = (t_main){0};
 	if (ac != 2)
 	{
-		ft_putendl_fd("Error\nProgram must take 1 argument.", STDERR_FILENO);
+		ft_putendl_fd("Error\nProgram must take 1 argument.", STDOUT_FILENO);
 		return (EXIT_FAILURE);
 	}
-	if (!ft_strnstr(av[1], ".ber", ft_strlen(av[1]))
-		|| ft_strnstr(av[1], ".ber", ft_strlen(av[1]))[4])
+	main = (t_main){0};
+	ext = ft_strnstr(av[1], ".ber", ft_strlen(av[1]));
+	if (!ext || ext == av[1] || ext[4] || ext[-1] == '/')
 	{
-		ft_putendl_fd("Error\nProgram must take a <.ber> file.", STDERR_FILENO);
+		ft_putendl_fd("Error\nProgram must take a <.ber> file.", STDOUT_FILENO);
 		return (EXIT_FAILURE);
 	}
 	ft_parse_map(av[1], &main.map.parsed_map);
 	if (!ft_check_valid_map(&main.map))
 	{
-		ft_putendl_fd("Error\nInvalid map.", STDERR_FILENO);
+		ft_putendl_fd("Error\nInvalid map.", STDOUT_FILENO);
 		ft_exit(EXIT_FAILURE, &main);
 	}
 	ft_so_long(&main);

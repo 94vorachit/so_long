@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 20:38:46 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/15 23:18:25 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/19 19:52:43 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_parse_map(char *file, char ***map)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error\nCouldn't open map");
+		ft_putendl_fd("Error\nCouldn't open map", STDOUT_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	lines = ft_strdup("");

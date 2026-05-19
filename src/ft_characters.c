@@ -87,7 +87,7 @@ void	ft_xpm_to_img(t_main *main)
 		|| !main->map.assets.gemstone || !main->map.assets.right_exit
 		|| !main->map.assets.left_exit || !main->map.assets.player)
 	{
-		perror("Error\nCouldn't load assets");
+		ft_putendl_fd("Error\nCouldn't load assets", STDOUT_FILENO);
 		ft_exit(EXIT_FAILURE, main);
 	}
 }
