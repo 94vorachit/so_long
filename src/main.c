@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 23:54:11 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/16 02:46:34 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:09:14 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void	ft_so_long(t_main *main)
 int	main(int ac, char **av)
 {
 	t_main	main;
-	
+
+	main = (t_main){0};
 	if (ac != 2)
 	{
 		ft_putendl_fd("Error\nProgram must take 1 argument.", STDERR_FILENO);

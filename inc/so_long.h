@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 01:04:58 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/04/16 04:47:01 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:01:17 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@
 # define L_EXIT_IMG "img/tomb.xpm"
 # define PLAYER_IMG "img/Zombie.xpm"
 
-typedef struct s_win {
+typedef struct s_win
+{
 	void		*mlx_win;
 	int			width;
 	int			height;
 }	t_win;
 
-typedef struct s_assets {
+typedef struct s_assets
+{
 	void		*empty_space;
 	void		*wall;
 	void		*gemstone;
@@ -63,7 +65,8 @@ typedef struct s_assets {
 	int			height;
 }	t_assets;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		**parsed_map;
 	int			collectibles;
 	int			exit;
@@ -75,7 +78,8 @@ typedef struct s_map {
 	t_assets	assets;
 }	t_map;
 
-typedef struct s_main {
+typedef struct s_main
+{
 	void		*mlx;
 	t_win		win;
 	t_map		map;
@@ -95,7 +99,7 @@ char	*get_next_line(int fd);
 void	ft_render_assets(t_main *main);
 void	ft_xpm_to_img(t_main *main);
 
-void	ft_exit(int	status, t_main *main);
+void	ft_exit(int status, t_main *main);
 int		window_destroyed(t_main *main);
 
 int		key_hook(int keycode, t_main *main);
