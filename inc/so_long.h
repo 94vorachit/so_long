@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 01:04:58 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 18:52:54 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:06:45 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_map
 	t_position	position;
 	int			movements;
 	int			game_ended;
+	int			player_on_exit; // for move pass exit
 	int			width;
 	int			height;
 	t_assets	assets;

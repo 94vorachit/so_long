@@ -6,12 +6,21 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:03:09 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 18:52:54 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:09:41 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/so_long.h"
 
+/*	for can't move pass the exit
+	else if (component == START_POSITION)
+	{
+		if (main->map.game_ended)
+			ft_put_asset(EXIT, x, y, main);
+		mlx_put_image_to_window(main->mlx, main->win.mlx_win,
+			main->map.assets.player, x, y);
+	}
+*/
 static void	ft_put_asset(char component, int x, int y, t_main *main)
 {
 	if (component != WALL)
@@ -34,7 +43,7 @@ static void	ft_put_asset(char component, int x, int y, t_main *main)
 	}
 	else if (component == START_POSITION)
 	{
-		if (main->map.game_ended)
+		if (main->map.player_on_exit)
 			ft_put_asset(EXIT, x, y, main);
 		mlx_put_image_to_window(main->mlx, main->win.mlx_win,
 			main->map.assets.player, x, y);
@@ -47,12 +56,9 @@ void	ft_render_assets(t_main *main)
 	int		j;
 	int		x;
 	int		y;
-	/*char	*desc;
-	int		c;*/
+
 	y = 0;
 	i = 0;
-	/*c = 0x00FFFFFF;
-	desc = "P R E S S   E S C   O R   C L I C K   ( X )   T O   E X I T";*/
 	while (main->map.parsed_map[i])
 	{
 		x = 0;
@@ -66,7 +72,6 @@ void	ft_render_assets(t_main *main)
 		y += main->map.assets.height;
 		i ++;
 	}
-	/*mlx_string_put(main->mlx, main->win.mlx_win, 10, 20, c, desc);*/
 }
 
 void	ft_xpm_to_img(t_main *main)

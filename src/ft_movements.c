@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:11:56 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 18:52:49 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/26 19:10:45 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_get_start_pos(int *x, int *y, t_main *main)
 		*x += 1;
 	}
 }
-
+/*	for can't move pass the exit
 static void	ft_move_to(char *current_pos, char *new_pos, t_main *main)
 {
 	if (*new_pos == EMPTY_SPACE
@@ -39,6 +39,33 @@ static void	ft_move_to(char *current_pos, char *new_pos, t_main *main)
 		else if (*new_pos == EXIT)
 			main->map.game_ended = 1;
 		*current_pos = EMPTY_SPACE;
+		*new_pos = START_POSITION;
+		main->map.movements++;
+		printf("Movement count: %d\n", main->map.movements);
+	}
+}*/
+
+static void	ft_move_to(char *current_pos, char *new_pos, t_main *main)
+{
+	int	was_on_exit;
+
+	was_on_exit = main->map.player_on_exit;
+	if (*new_pos == EMPTY_SPACE
+		|| *new_pos == COLLECTIBLE
+		|| *new_pos == EXIT)
+	{
+		if (*new_pos == COLLECTIBLE)
+			main->map.collectibles--;
+		if (*new_pos == EXIT)
+			main->map.player_on_exit = 1;
+		else
+			main->map.player_on_exit = 0;
+		if (*new_pos == EXIT && main->map.collectibles == 0)
+			main->map.game_ended = 1;
+		if (was_on_exit)
+			*current_pos = EXIT;
+		else
+			*current_pos = EMPTY_SPACE;
 		*new_pos = START_POSITION;
 		main->map.movements++;
 		printf("Movement count: %d\n", main->map.movements);
