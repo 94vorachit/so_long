@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 01:04:58 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/19 18:01:17 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/26 18:52:54 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ typedef struct s_win
 	int			height;
 }	t_win;
 
+typedef struct s_position
+{
+	int			start_position;
+	int			start_position_x;
+	int			start_position_y;
+}	t_position;
+
 typedef struct s_assets
 {
 	void		*empty_space;
@@ -70,7 +77,7 @@ typedef struct s_map
 	char		**parsed_map;
 	int			collectibles;
 	int			exit;
-	int			start_position;
+	t_position	position;
 	int			movements;
 	int			game_ended;
 	int			width;
@@ -112,5 +119,7 @@ char	*ft_itoa(int n);
 
 int		ft_check_valid_map(t_map *map);
 void	ft_parse_map(char *file, char ***map);
+
+int		ft_validate_reachability(t_map *map);
 
 #endif

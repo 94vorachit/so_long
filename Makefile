@@ -6,7 +6,7 @@
 #    By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/15 17:24:51 by vorhansa          #+#    #+#              #
-#    Updated: 2026/04/16 02:34:03 by vorhansa         ###   ########.fr        #
+#    Updated: 2026/05/26 17:10:09 by vorhansa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS	=	src/main.c\
 			src/ft_movements.c\
 			src/ft_utils.c\
 			src/ft_validate.c\
+			src/ft_validate_2.c\
 			src/get_next_line.c
 			
 OBJS	=	$(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 20:38:46 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/19 19:52:43 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/26 17:17:54 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_init_map(t_map *map)
 {
 	map->collectibles = 0;
 	map->exit = 0;
-	map->start_position = 0;
+	map->position.start_position = 0;
 	map->movements = 0;
 	map->game_ended = 0;
 	map->width = 0;
@@ -38,8 +38,22 @@ static int	ft_validate_components(t_map *map, char *parsed_map)
 		else if (parsed_map[i] == EXIT)
 			map->exit++;
 		else if (parsed_map[i] == START_POSITION)
-			map->start_position++;
+			map->position.start_position++;
 		else if (parsed_map[i] != EMPTY_SPACE && parsed_map[i] != WALL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	ft_validate_walls(char *parsed_map)
+{
+	int	i;
+
+	i = 0;
+	while (parsed_map[i])
+	{
+		if (parsed_map[i] != WALL)
 			return (0);
 		i++;
 	}
@@ -51,23 +65,24 @@ int	ft_check_valid_map(t_map *map)
 	ft_init_map(map);
 	while (map->parsed_map[map->height])
 	{
-		// Enforce rectangular shape At first row, it stores width. 
-		// For each next row, if length differs, it fails immediately (returns 0).
 		if (map->height == 0)
 			map->width = ft_strlen(map->parsed_map[map->height]);
 		else if ((int)ft_strlen(map->parsed_map[map->height]) != map->width)
 			return (0);
-		// if ((map->height == 0 || !map->parsed_map[map->height + 1])
-		// 	&& !ft_validate_walls(map->parsed_map[map->height]))
-		// 	return (0);
-		// if ((map->height == 0 || !map->parsed_map[map->height + 1])
-		// 	&& !ft_validate_components(map, map->parsed_map[map->height]))
-		// 	return (0);
+		if ((map->height == 0 || !map->parsed_map[map->height + 1])
+			&& !ft_validate_walls(map->parsed_map[map->height]))
+			return (0);
+		if ((map->height == 0 || !map->parsed_map[map->height + 1])
+			&& !ft_validate_components(map, map->parsed_map[map->height]))
+			return (0);
 		if (!ft_validate_components(map, map->parsed_map[map->height]))
 			return (0);
 		map->height++;
 	}
-	if (map->exit != 1 || map->collectibles < 1 || map->start_position != 1)
+	if (map->exit != 1 || map->collectibles < 1
+		|| map->position.start_position != 1)
+		return (0);
+	if (!ft_validate_reachability(map))
 		return (0);
 	return (1);
 }
