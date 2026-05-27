@@ -55,3 +55,11 @@ note : make m
 ## Additional
 
 * LIBFT
+* FT_PRINTF
+
+### AI Usage
+GitHub Copilot (GPT-5 mini backend) is used for
+* Is used to analyze other's people code sample, comprehend the code logic.
+* Is used to help with debugging where logic errors occured.
+* Discussed about logic
+* Used for finding information about micro-optimization, techniques, coding convention.
