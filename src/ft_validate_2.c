@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 16:54:50 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 18:19:49 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:04:19 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ static void	ft_flood_fill(char **grid, int x, int y, t_map *map)
 
 int	ft_validate_reachability(t_map *map)
 {
-	char	**duplicate;
+	char	**dup;
 	int		x;
 	int		y;
 
 	if (!ft_find_start(map))
 		return (0);
-	duplicate = ft_duplicate_map(map);
-	if (!duplicate)
+	dup = ft_duplicate_map(map);
+	if (!dup)
 		return (0);
-	ft_flood_fill(duplicate, map->position.start_position_x,
+	ft_flood_fill(dup, map->position.start_position_x,
 		map->position.start_position_y, map);
 	x = 0;
 	while (x < map->height)
@@ -91,12 +91,12 @@ int	ft_validate_reachability(t_map *map)
 		y = 0;
 		while (y < map->width)
 		{
-			if (duplicate[x][y] == COLLECTIBLE || duplicate[x][y] == EXIT)
-				return (ft_free_2d(duplicate), 0);
+			if (dup[x][y] == COLLECTIBLE || dup[x][y] == EXIT)
+				return (ft_free_2d(dup), 0);
 			y++;
 		}
 		x++;
 	}
-	ft_free_2d(duplicate);
+	ft_free_2d(dup);
 	return (1);
 }

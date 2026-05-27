@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:22:20 by hel-makh          #+#    #+#             */
-/*   Updated: 2026/04/16 02:34:08 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:05:19 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static char	*get_fd_content(int fd, t_line *fd_list)
 }
 
 static void	set_fd_content(
-	int fd, t_line **fd_list, char content[BUFFER_SIZE + 1]
-)
+	int fd, t_line **fd_list, char content[BUFFER_SIZE + 1])
 {
 	t_line	*holder;
 	t_line	*new_list;

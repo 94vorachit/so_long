@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:11:56 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 19:10:45 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:16:50 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	ft_move_to(char *current_pos, char *new_pos, t_main *main)
 			*current_pos = EMPTY_SPACE;
 		*new_pos = START_POSITION;
 		main->map.movements++;
-		printf("Movement count: %d\n", main->map.movements);
+		ft_printf("Movement count: %d\n", main->map.movements);
 	}
 }
 
@@ -104,7 +104,7 @@ int	key_hook(int keycode, t_main *main)
 	ft_render_assets(main);
 	if (main->map.game_ended)
 	{
-		printf("You won!\n");
+		ft_printf("You won!\n");
 		window_destroyed(main);
 	}
 	return (1);

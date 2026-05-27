@@ -6,7 +6,7 @@
 /*   By: vorhansa <vorhansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:03:09 by vorhansa          #+#    #+#             */
-/*   Updated: 2026/05/26 19:09:41 by vorhansa         ###   ########.fr       */
+/*   Updated: 2026/05/27 18:01:45 by vorhansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_xpm_to_img(t_main *main)
 		|| !main->map.assets.gemstone || !main->map.assets.right_exit
 		|| !main->map.assets.left_exit || !main->map.assets.player)
 	{
-		ft_putendl_fd("Error\nCouldn't load assets", STDOUT_FILENO);
-		ft_exit(EXIT_FAILURE, main);
+		ft_putendl_fd("Error\nCouldn't load assets", 1);
+		ft_exit(1, main);
 	}
 }
